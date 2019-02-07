@@ -4,19 +4,13 @@ import com.waracle.cakemgr.entity.CakeEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -59,8 +53,6 @@ public class CakeRepositoryTest {
         expectedCakeEntity.setDescription("Super cake");
         expectedCakeEntity.setImage("https://www.pexels.com/photo/chocolate-cake-with-white-icing-and-strawberry-on-top-with-chocolate-69817/");
 
-        List<CakeEntity> cakes = cakeRepository.findAll();
-
         // when
         CakeEntity cakeEntity = new CakeEntity();
         Optional<CakeEntity> found = cakeRepository.findById(cakeId);
@@ -79,8 +71,6 @@ public class CakeRepositoryTest {
     public void testReturnsUpdatedCake() {
         // given
         String expectedCakeDescription = "Strawberry cakes forever";
-
-        List<CakeEntity> cakes = cakeRepository.findAll();
 
         // when
         CakeEntity updatedCakeEntity = new CakeEntity();
