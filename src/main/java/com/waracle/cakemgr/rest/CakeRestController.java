@@ -103,7 +103,7 @@ public class  CakeRestController {
         return cakeEntity;
     }
 
-    // add mapping for POST /cakes - adding a new employee
+    // add mapping for POST /cakes - adding a new cake
     @PostMapping("/cakes")
     public CakeEntity addCake(@RequestBody CakeEntity cakeEntity){
         cakeEntity.setCakeId(0);
@@ -111,7 +111,7 @@ public class  CakeRestController {
         return cakeEntity;
     }
 
-    // add mapping for PUT /cakes - updating a new employee
+    // add mapping for PUT /cakes - updating a new cake
     @PutMapping("/cakes")
     public CakeEntity updateCake(@RequestBody CakeEntity cakeEntity){
         cakeService.saveCake(cakeEntity);

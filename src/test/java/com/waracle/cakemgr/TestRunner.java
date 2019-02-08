@@ -10,7 +10,7 @@ public class TestRunner {
 
         if (result.wasSuccessful()) {
             System.out.println("===============================================");
-            System.out.println("   All the " + result.getRunCount()+" tests passed !  ");
+            System.out.println("   All the " + result.getRunCount()+ " tests passed !  ");
             System.out.println("===============================================");
             return;
         }
