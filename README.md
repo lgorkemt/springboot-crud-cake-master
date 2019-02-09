@@ -41,7 +41,9 @@ You may also package with mvnw;
   If you have Postman installed you may try all the CRUD operations that the api provides.
   
   GET http://localhost:8080/cakes (Selects all cakes)
+  
   GET http://localhost:8080/cakes/1 (Select the cake  with having the id 1)
+  
   POST http://localhost:8080/cakes (Insert a new cake)
   
   Body;
@@ -52,7 +54,7 @@ You may also package with mvnw;
         "image": "https://www.gstatic.com/webp/gallery/1.webp"
     }
     
-  https://www.gstatic.com/webp/gallery/1.webp
+  
   PUT http://localhost:8080/cakes (Update the cake with having the id 1)
     
   Body;
