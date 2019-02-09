@@ -74,6 +74,6 @@ You may also package with mvnw;
 
 ======================================================================================
 
-Note : I changed the CakesEntity column and table mappings as they seem to be copiied from
+Note : I changed the CakesEntity column and table mappings as they seem to be copied from
 an existing table and were keeping field names related to that table.
 
