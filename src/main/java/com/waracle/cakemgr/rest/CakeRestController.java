@@ -118,7 +118,7 @@ public class  CakeRestController {
         return cakeEntity;
     }
 
-    // add mapping for GET /cakes/{employeeId}
+    // add mapping for DELETE /cakes/{cakeId}
     @DeleteMapping("/cakes/{cakeId}")
     public String deleteCake(@PathVariable int cakeId){
         CakeEntity cakeEntity = cakeService.findCakeById(cakeId);
