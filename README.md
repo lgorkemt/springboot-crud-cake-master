@@ -1,5 +1,5 @@
 . The application is spring boot rest api which provides end points for making
-CRUD operations on an in memory database for Cakes entity.
+CRUD operations on an in memory database for an entity named CakeEntity.
 
 . To compile, package and run the application, go to the root folder and run the following commands;
 
