@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.waracle.cakemgr.entity.CakeEntity;
 import com.waracle.cakemgr.service.CakeService;
+import com.waracle.cakemgr.service.InitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,63 +21,20 @@ import java.util.List;
 public class  CakeRestController {
 
     CakeService cakeService;
+    InitService initService;
 
-    // inject Cake Service
+    // inject Cake Service and Init Service
     @Autowired
-    public CakeRestController(CakeService cakeService){
+    public CakeRestController(CakeService cakeService, InitService initService){
+
         this.cakeService = cakeService;
+        this.initService = initService;
     }
 
     @PostConstruct
     public void init() {
 
-        System.out.println("init started");
-
-        System.out.println("downloading cake json");
-
-        try (InputStream inputStream = new URL("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json").openStream()) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-
-            StringBuffer buffer = new StringBuffer();
-            String line = reader.readLine();
-            while (line != null) {
-                buffer.append(line);
-                line = reader.readLine();
-            }
-
-            System.out.println("parsing cake json");
-            JsonParser parser = new JsonFactory().createParser(buffer.toString());
-            if (JsonToken.START_ARRAY != parser.nextToken()) {
-                throw new Exception("bad token");
-            }
-
-            JsonToken nextToken = parser.nextToken();
-            while(nextToken == JsonToken.START_OBJECT) {
-                System.out.println("creating cake entity");
-
-                CakeEntity cakeEntity = new CakeEntity();
-                System.out.println(parser.nextFieldName());
-                cakeEntity.setTitle(parser.nextTextValue());
-
-                System.out.println(parser.nextFieldName());
-                cakeEntity.setDescription(parser.nextTextValue());
-
-                System.out.println(parser.nextFieldName());
-                cakeEntity.setImage(parser.nextTextValue());
-
-                cakeService.saveCake(cakeEntity);
-
-                nextToken = parser.nextToken();
-                System.out.println(nextToken);
-
-                nextToken = parser.nextToken();
-                System.out.println(nextToken);
-            }
-
-        } catch (Exception ex) {
-             ex.printStackTrace();
-        }
-        System.out.println("init finished");
+        initService.initDB(cakeService);
     }
 
     // expose cakes and return list of cakes
