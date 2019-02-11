@@ -26,14 +26,12 @@ public class  CakeRestController {
     // inject Cake Service and Init Service
     @Autowired
     public CakeRestController(CakeService cakeService, InitService initService){
-
         this.cakeService = cakeService;
         this.initService = initService;
     }
 
     @PostConstruct
     public void init() {
-
         initService.initDB(cakeService);
     }
 
