@@ -63,6 +63,7 @@ You may also package with mvnw;
   Body;
   
     { 
+        "cakeId": 1,
         "title": "A Brand new strawberry cake",
         "description": "strawberry cakes forever",
         "image": "https://www.gstatic.com/webp/gallery/1.webp"
