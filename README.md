@@ -28,7 +28,7 @@ You may also package with mvnw;
     
    confirm the .jar is there with;
    
-    -ls *.jar
+    ls *.jar
     
    Run the jar file (Tomcat runs on port 8080, no application should be running on this port);
    
@@ -74,6 +74,26 @@ You may also package with mvnw;
 
 
 . You may also run all the tests standalone at once by running TestRunner.java from your editor.
+
+======================================================================================
+
+. Application may run on Docker as well. To build a docker image go to the root folder and run the 
+command below;
+
+docker build -f Dockerfile -t cake-master-spring-boot .
+
+
+. After seeing 'Successfully built' message, check if the image 'cake-master-spring-boot' is created by 
+this command;
+
+docker images
+
+. Run your container on 8282 by the following command;
+
+docker run -p 8282:8080 cake-master-spring-boot
+
+. Go to the browser, http://localhost:8282 should take you to the application. (scott, tiger are the 
+user and password)
 
 ======================================================================================
 

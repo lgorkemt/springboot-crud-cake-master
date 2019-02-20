@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @Controller
 @RequestMapping("/ui")
 public class CakeController {
@@ -28,8 +29,7 @@ public class CakeController {
 
         model.addAttribute("cakes", cakes);
 
-        model.addAttribute("defaultImage", "/resources/img/cake.jpg");
-        return "/ui/list-cakes";
+        return "ui/list-cakes";
     }
 
     @GetMapping("/showFormForAdd")
@@ -39,7 +39,7 @@ public class CakeController {
 
         model.addAttribute("cake" , cakeEntity);
 
-        return "/ui/cake-form";
+        return "ui/cake-form";
     }
 
     @GetMapping("/showFormForUpdate")
@@ -51,7 +51,7 @@ public class CakeController {
         // set the cake as a model attribute and send it to the view to pre-populate
         model.addAttribute("cake" , cakeEntity);
 
-        return "/ui/cake-form";
+        return "ui/cake-form";
     }
 
     @GetMapping("/delete")

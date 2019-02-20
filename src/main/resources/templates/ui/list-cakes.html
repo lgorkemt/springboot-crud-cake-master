@@ -18,14 +18,14 @@
 
 	<h3>Cake Directory</h3>
 	<hr>
-	
+
 	<!-- Add a button -->
 	<a th:href="@{/ui/showFormForAdd}"
 		class="btn btn-primary btn-sm mb-3">
 		Add Cake
 	</a>
-	
-	
+
+
 	<table class="table table-bordered table-striped">
 		<thead class="thead-dark">
 			<tr>
@@ -35,10 +35,10 @@
 				<th>Action</th>
 			</tr>
 		</thead>
-		
+
 		<tbody>
 			<tr th:each="cake : ${cakes}">
-			
+
 				<td th:text="${cake.title}" />
 				<td th:text="${cake.description}" />
 				<td><img th:src="@{${cake.image}}" height="45" width="45"></td>
@@ -55,12 +55,13 @@
 						Delete
 					</a>
 				</td>
-				
+
 			</tr>
-		</tbody>		
+		</tbody>
 	</table>
-	
+
 </div>
+
 	
 </body>
 </html>
