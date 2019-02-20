@@ -16,7 +16,6 @@ public class CakeController {
 
     CakeService cakeService;
 
-    // inject Employee DAO
     @Autowired
     public CakeController(CakeService cakeService){
         this.cakeService = cakeService;
