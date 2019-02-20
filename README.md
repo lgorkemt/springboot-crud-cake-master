@@ -1,5 +1,5 @@
-. The application is spring boot rest api which provides end points for making
-CRUD operations on an in memory database for an entity named CakeEntity.
+. The application is a spring boot rest api (having a user interface as well) which provides end points 
+for making CRUD operations on an in memory database for an entity named CakeEntity.
 
 . To compile, package and run the application, go to the root folder and run the following commands;
 
@@ -33,9 +33,11 @@ You may also package with mvnw;
    
      java -jar springboot-crud-cake-master-0.0.1-SNAPSHOT.jar
      
-   You may then go to localhost:8080 and see Welcome message after authenticating with the user
-   scott and password tiger.
+   You may then go to localhost:8080 and see the list of entities after authenticating with the user
+   scott and password tiger. At this point you may do all the CRUD operations with UI.
    
+  . Application provides a Rest Api as well.
+    
   . Doing CRUD operations with the api;
   
   If you have Postman installed you may try all the CRUD operations that the api provides.
@@ -71,6 +73,26 @@ You may also package with mvnw;
 
 
 . You may also run all the tests standalone at once by running TestRunner.java from your editor.
+
+======================================================================================
+
+. Application may run on Docker as well. To build a docker image go to the root folder and run the 
+command below;
+
+docker build -f Dockerfile -t cake-master-spring-boot .
+
+
+. After seeing 'Successfully built' message, check if the image 'cake-master-spring-boot' is created by 
+this command;
+
+docker images
+
+. Run your container on 8282 by the following command;
+
+docker run -p 8282:8080 cake-master-spring-boot
+
+. Go to the browser, http://localhost:8282 should take you to the application. (scott, tiger are the 
+user and pasword)
 
 ======================================================================================
 

@@ -36,12 +36,6 @@ public class  CakeRestController {
     }
 
     // expose cakes and return list of cakes
-    @GetMapping("/")
-    public String welcome(){
-        return "Welcome to cake Master!";
-    }
-
-    // expose cakes and return list of cakes
     @GetMapping("/cakes")
     public List<CakeEntity> getCakes(){
         List<CakeEntity> cakeEntityList = cakeService.findAll();
