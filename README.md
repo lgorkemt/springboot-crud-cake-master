@@ -86,7 +86,7 @@ command below;
 
 . After seeing 'Successfully built' message, check if the image 'cake-master-spring-boot' is created by 
 this command;
-
+ 
     docker images
 
 . Run your container on 8282 by the following command;

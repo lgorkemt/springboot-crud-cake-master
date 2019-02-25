@@ -82,6 +82,11 @@ public class CakeRepositoryTest {
             cakeRepository.save(updatedCakeEntity);
         }
 
+        found = cakeRepository.findById(cakeId);
+        if(found.isPresent()) {
+            updatedCakeEntity = found.get();
+        }
+
         // then
         assertEquals(expectedCakeDescription, updatedCakeEntity.getDescription());
     }
@@ -100,7 +105,7 @@ public class CakeRepositoryTest {
         List<CakeEntity> cakes = cakeRepository.findAll();
 
         // then
-        assertEquals(cakeRepository.findAll().size(), 2);
+        assertEquals(cakes.size(), 2);
     }
 
     @Test
