@@ -104,11 +104,19 @@ public class CakeRestControllerTest {
 
         given(cakeService.findCakeById(2)).willReturn(cakeEntity);
 
+        mockMvc.perform(get("/cakes/2")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'cakeId': 2,'title': 'Strawberry cake','description': 'Super cake','image' : 'https://www.pexels.com/photo/chocolate-cake-with-white-icing-and-strawberry-on-top-with-chocolate-69817/'}"));
+
+        // perform update
+        cakeEntity.setDescription("Strawberry cakes forever");
+
         mockMvc.perform(put("/cakes")
                 .content(mapToJson(cakeEntity))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'cakeId': 2,'title': 'Strawberry cake','description': 'Super cake','image' : 'https://www.pexels.com/photo/chocolate-cake-with-white-icing-and-strawberry-on-top-with-chocolate-69817/'}"));
+                .andExpect(content().json("{'cakeId': 2,'title': 'Strawberry cake','description': 'Strawberry cakes forever','image' : 'https://www.pexels.com/photo/chocolate-cake-with-white-icing-and-strawberry-on-top-with-chocolate-69817/'}"));
     }
 
     @Test
