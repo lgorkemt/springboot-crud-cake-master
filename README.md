@@ -1,6 +1,6 @@
 . The application is a spring boot rest api (having a user interface as well) which provides end points 
 for making CRUD operations on an in memory database for an entity named CakeEntity. Thymeleaf and bootstrap
-is used for the UI.
+is used for the UI. Spring security was applied for authentication an authorisation.
 
 . To compile, package and run the application, go to the root folder and run the following commands;
 
@@ -93,11 +93,8 @@ this command;
 
     docker run -p 8282:8080 cake-master-spring-boot
 
-. Go to the browser, http://localhost:8282 should take you to the application. (scott, tiger are the 
-user and password)
+. Go to the browser, http://localhost:8282 should take you to the application. (scott, tiger may ne used for 
+user and password. Check SecurityConfig file for other users and roles)
 
-======================================================================================
 
-Note : I changed the CakesEntity column and table mappings as they seem to be copied from
-an existing table and were keeping field names related to that table.
 
