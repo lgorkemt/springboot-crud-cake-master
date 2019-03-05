@@ -73,4 +73,11 @@ public class CakeController {
         return "redirect:/ui/list";
     }
 
+    @GetMapping("/onlyForManagers")
+    public String onlyForManagers(){
+
+        // use a redirect to prevent duplicate submissions
+        return "ui/only-for-managers";
+    }
+
 }

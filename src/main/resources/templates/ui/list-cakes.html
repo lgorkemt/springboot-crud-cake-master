@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <!-- Required meta tags -->
@@ -20,10 +20,19 @@
 	<hr>
 
 	<!-- Add a button -->
-	<a th:href="@{/ui/showFormForAdd}"
-		class="btn btn-primary btn-sm mb-3">
-		Add Cake
-	</a>
+	<div>
+        <div class="float-left">
+            <a th:href="@{/ui/showFormForAdd}"
+                class="btn btn-primary btn-sm mb-3">
+                Add Cake
+            </a>
+        </div>
+        <div class="float-right">
+            <form th:action="@{/logout}" method="post" class="form-horizontal">
+                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+            </form>
+        </div>
+    </div>
 
 
 	<table class="table table-bordered table-striped">
@@ -32,7 +41,9 @@
 				<th>Title</th>
 				<th>Description</th>
 				<th>Image</th>
-				<th>Action</th>
+                <div th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_MANAGER')}">
+				    <th>Action</th>
+                </div>
 			</tr>
 		</thead>
 
@@ -42,24 +53,32 @@
 				<td th:text="${cake.title}" />
 				<td th:text="${cake.description}" />
 				<td><img th:src="@{${cake.image}}" height="45" width="45"></td>
+                <div th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_MANAGER')}">
+                    <td>
+                        <a th:href="@{/ui/showFormForUpdate(cakeId=${cake.cakeId})}"
+                            class="btn btn-info btn-sm">
+                            Update
+                        </a>
 
-				<td>
-					<a th:href="@{/ui/showFormForUpdate(cakeId=${cake.cakeId})}"
-						class="btn btn-info btn-sm">
-						Update
-					</a>
-
-					<a th:href="@{/ui/delete(cakeId=${cake.cakeId})}"
-					   class="btn btn-danger btn-sm"
-						onclick="if(!(confirm('Are you sure you want to delete this delicious cake?'))) return false;">
-						Delete
-					</a>
-				</td>
+                        <a th:href="@{/ui/delete(cakeId=${cake.cakeId})}"
+                           class="btn btn-danger btn-sm"
+                            onclick="if(!(confirm('Are you sure you want to delete this delicious cake?'))) return false;">
+                            Delete
+                        </a>
+                    </td>
+                </div>
 
 			</tr>
 		</tbody>
 	</table>
-
+    <div>
+        <div class="float-right">
+            <a th:href="@{/ui/onlyForManagers}"
+               class="btn btn-warning btn-sm">
+                Only For Managers
+            </a>
+        </div>
+    </div>
 </div>
 
 	

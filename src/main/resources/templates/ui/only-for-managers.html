@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Only For Managers</h1>
+        <div th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]',
+            you are a good manager.
+        </div>
+    </div>
+
+    <div style="margin-top: 25px">
+        <a th:href="@{/ui/list}">Back to Cakes List</a>
+    </div>
+
+</div>
+
+</body>
+</html>

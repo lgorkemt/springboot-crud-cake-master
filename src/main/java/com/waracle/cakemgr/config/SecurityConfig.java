@@ -11,22 +11,39 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
         auth.inMemoryAuthentication()
-                .withUser("scott").password("{noop}tiger").roles("ADMIN");
+                .withUser("scott").password("{noop}tiger").authorities("ROLE_USER" ,"ROLE_ADMIN")
+                .and()
+                .withUser("john").password("{noop}simple").authorities("ROLE_USER")
+                .and()
+                .withUser("pamela").password("{noop}manager").authorities("ROLE_MANAGER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
+
+
+        http.authorizeRequests()
+                .antMatchers("/ui/showFormForUpdate*").hasAnyRole( "ADMIN", "MANAGER")
+                .antMatchers("/ui/save*").hasAnyRole( "ADMIN", "MANAGER")
+                .antMatchers("/ui/delete*").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/ui/showFormForAdd*").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/cakes/**").hasRole("ADMIN")
+                .antMatchers("/ui/list*").permitAll()
+                .antMatchers("/ui/onlyForManagers*").hasAnyRole(  "MANAGER")
+                .anyRequest().authenticated()
                 .and()
-                .httpBasic()
+                .formLogin()
+                .loginPage("/showMyLoginPage")
+                .loginProcessingUrl("/authenticateTheUser")
+                .permitAll()
                 .and()
-                .csrf().disable();
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/access-denied");
+
     }
 }

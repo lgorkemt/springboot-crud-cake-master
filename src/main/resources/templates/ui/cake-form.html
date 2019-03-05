@@ -18,26 +18,40 @@
         <h3>Cake Directory</h3>
         <hr>
 
+
+        <div class="float-right">
+            <form th:action="@{/logout}" method="post" class="form-horizontal">
+                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+            </form>
+        </div>
+
         <p class="h4 mb-4">Save Cake</p>
+
 
         <form action="#" th:action="@{/ui/save}" th:object="${cake}" method="post">
 
-            <!-- Add a hidden field to update -->
-            <input type="hidden" th:field="*{cakeId}">
+            <div class="clear">
 
-            <input type="text" th:field="*{title}" class="form-control mb-4 col-4" placeholder="Title">
+                <!-- Add a hidden field to update -->
+                <input type="hidden" th:field="*{cakeId}">
 
-            <input type="text" th:field="*{description}" class="form-control mb-4 col-4" placeholder="Description">
+                <input type="text" th:field="*{title}" class="form-control mb-4 col-4" placeholder="Title">
 
-            <input type="text" th:field="*{image}" class="form-control mb-4 col-4" placeholder="Image">
+                <input type="text" th:field="*{description}" class="form-control mb-4 col-4" placeholder="Description">
 
-            <button type="submit" class="btn btn-info col-2">Save</button>
+                <input type="text" th:field="*{image}" class="form-control mb-4 col-4" placeholder="Image">
+
+                <button type="submit" class="btn btn-info col-2">Save</button>
+
+            </div>
 
         </form>
 
         <hr>
 
-        <a th:href="@{/employees/list}">Back to Cakes List</a>
+        <div style="margin-bottom: 25px">
+            <a th:href="@{/ui/list}">Back to Cakes List</a>
+        </div>
 
     </div>
 
