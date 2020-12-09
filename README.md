@@ -93,7 +93,7 @@ this command;
 
     docker run -p 8282:8080 cake-master-spring-boot
 
-. Go to the browser, http://localhost:8282 should take you to the application. (scott, tiger may ne used for 
+. Go to the browser, http://localhost:8282 should take you to the application. (scott, tiger may be used for 
 user and password. Check SecurityConfig file for other users and roles)
 
 
